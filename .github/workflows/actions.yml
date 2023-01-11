@@ -41,8 +41,10 @@ jobs:
          context: .
          push: true
          tags: |
-          ghcr.io/${{ github.repository }}:latest
-          ghcr.io/${{ github.repository }}:1.0.0
+           type=raw,value=1.0.${{ github.run_number }},priority=1000
+           type=ref,event=branch
+           type=sha
+           type=raw,value=latest
 
       - name: Checkout repository
         uses: actions/checkout@v3
